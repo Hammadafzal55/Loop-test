@@ -11,7 +11,8 @@ jobs:
       - uses: actions/checkout@v6
         with: { persist-credentials: false }
       - uses: anomalyco/opencode/github@latest
-        env: { NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }} }
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         with:
           model: nvidia/z-ai/glm-5.2
           prompt: |
