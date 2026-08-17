@@ -1,6 +1,6 @@
 ---
 mode: subagent
-model: anthropic/claude-haiku-4-5-20251001
+model: nvidia/z-ai/glm-5.2
 description: Reviews a diff against the spec and tests. Replies PASS or FAIL with reasons. Read-only.
 permission:
   edit: deny
