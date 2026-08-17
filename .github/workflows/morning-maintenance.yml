@@ -2,10 +2,6 @@ name: morning-maintenance
 on:
   schedule:
     - cron: "0 9 * * 1-5"
-  workflow_dispatch: {}name: morning-maintenance
-on:
-  schedule:
-    - cron: "0 9 * * 1-5"
   workflow_dispatch: {}
 jobs:
   triage:
@@ -20,25 +16,6 @@ jobs:
         with:
           model: nvidia/z-ai/glm-5.2
           use_github_token: true
-          prompt: |
-            Run the daily-triage skill.
-            Read progress.md first; update it last.
-            For each candidate fix: draft it on a new branch, then invoke the
-            @reviewer subagent to grade it. Open a PR only when the reviewer
-            replies PASS. Append anything risky to the "needs a human" section
-            of progress.md and leave it for the maintainer.
-jobs:
-  triage:
-    runs-on: ubuntu-latest
-    permissions: { contents: write, pull-requests: write, issues: write, id-token: write }
-    steps:
-      - uses: actions/checkout@v6
-        with: { persist-credentials: false }
-      - uses: anomalyco/opencode/github@latest
-        env:
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
-        with:
-          model: nvidia/z-ai/glm-5.2
           prompt: |
             Run the daily-triage skill.
             Read progress.md first; update it last.
