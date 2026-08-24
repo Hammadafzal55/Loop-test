@@ -15,7 +15,7 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: meta/llama-3.1-405b-instruct
+          model: nvidia/nemotron-3.5-lightning-30b-a3b
           use_github_token: true
           prompt: |
             Run the daily-triage skill.
