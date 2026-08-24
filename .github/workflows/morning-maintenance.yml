@@ -15,10 +15,8 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: nvidia/llama-2-7b-chat
+          model: meta/llama-3.1-70b-instruct
           use_github_token: true
-          max_api_calls: 30
-          stop_on_no_findings: true
           prompt: |
             Run the daily-triage skill.
             Read progress.md first; update it last.
@@ -27,5 +25,5 @@ jobs:
             replies PASS. Append anything risky to the "needs a human" section
             of progress.md and leave it for the maintainer.
             
-            NOTE: Stop gracefully after 30 API calls if no new findings are discovered.
-            Your rate limit: 40 rpm. Stay well under this threshold.
+            IMPORTANT: Stop after ~30 API calls to stay within the 40 rpm rate limit.
+            If no findings are discovered, exit gracefully without retrying.
